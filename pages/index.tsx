@@ -11,17 +11,9 @@ import Logos from "@/components/home/logos";
 import Pricing from "@/components/home/pricing";
 import HomeLayout from "@/components/layout/home";
 import OSS from "@/components/home/oss";
-import Testimonials from "@/components/home/testimonials";
-import getTweetsMetadata, { homepageTweets } from "@/lib/twitter";
 
-export default function Home({
-  userCount,
-  stars,
-  tweets,
-}: {
-  userCount: number;
+export default function Home({ stars }: {
   stars: number;
-  tweets: any;
 }) {
   const router = useRouter();
   const { key: stats } = router.query;
@@ -55,7 +47,6 @@ export default function Home({
         <Logos />
         <Globe />
         <Features />
-        <Testimonials userCount={userCount} tweets={tweets} />
         <Pricing />
         <OSS stars={stars} />
       </div>
@@ -80,13 +71,11 @@ export async function getStaticProps() {
     },
   ).then((res) => res.json());
 
-  const tweets = await getTweetsMetadata(homepageTweets);
 
   return {
     props: {
       userCount,
       stars,
-      tweets,
     },
     revalidate: 60,
   };
