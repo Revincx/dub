@@ -3,14 +3,14 @@ import nodemailer from "nodemailer";
 
 const sendMail = buildSendMail({
   transport: nodemailer.createTransport({
-    host: "smtp.postmarkapp.com",
-    port: 587,
+    host: process.env.EMAIL_SERVER_HOST || "smtp.postmarkapp.com",
+    port: parseInt(process.env.EMAIL_SERVER_PORT) || 587,
     auth: {
-      user: process.env.POSTMARK_API_KEY,
-      pass: process.env.POSTMARK_API_KEY,
+      user: process.env.EMAIL_SERVER_USER,
+      pass: process.env.EMAIL_SERVER_PASSWORD,
     },
   }),
-  defaultFrom: "Steven from Dub <steven@dub.sh>",
+  defaultFrom: process.env.EMAIL_FROM,
   configPath: "./mailing.config.json",
 });
 
