@@ -58,7 +58,7 @@ function AddProjectModalHelper({
   const [debouncedDomain] = useDebounce(domain, 500);
   useEffect(() => {
     if (debouncedDomain.length > 0) {
-      fetch(`/api/projects/dub.sh/domains/${debouncedDomain}/exists`).then(
+      fetch(`/api/projects/${process.env.DUB_DOMAIN}/domains/${debouncedDomain}/exists`).then(
         async (res) => {
           if (res.status === 200) {
             const exists = await res.json();
@@ -166,7 +166,7 @@ function AddProjectModalHelper({
             </label>
             <div className="relative mt-1 flex rounded-md shadow-sm">
               <span className="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-5 text-gray-500 sm:text-sm">
-                app.dub.sh
+                {process.env.DUB_APP_DOMAIN}
               </span>
               <input
                 name="slug"
@@ -222,7 +222,7 @@ function AddProjectModalHelper({
                     ? "border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500"
                     : "border-gray-300 text-gray-900 placeholder-gray-300 focus:border-gray-500 focus:ring-gray-500"
                 } block w-full rounded-md pr-10 focus:outline-none sm:text-sm`}
-                placeholder="dub.sh"
+                placeholder={process.env.DUB_DOMAIN}
                 value={domain}
                 onChange={(e) => {
                   setDomainError(null);

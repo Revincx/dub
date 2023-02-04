@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <div className="mx-auto mt-20 mb-10 max-w-md px-2.5 text-center sm:max-w-lg sm:px-0">
       <a
-        href="https://dub.sh/launch"
+        href={`https://${process.env.DUB_DOMAIN}/launch`}
         target="_blank"
         rel="noreferrer"
         className="mx-auto flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-all hover:bg-blue-200"
@@ -30,7 +30,7 @@ const Hero = () => {
 
       <div className="mx-auto mt-10 flex max-w-fit space-x-4">
         <Link
-          href="https://app.dub.sh/register"
+          href={`https://${process.env.DUB_APP_DOMAIN}/register`}
           className="rounded-full border border-black bg-black py-2 px-5 text-sm text-white shadow-lg transition-all hover:bg-white hover:text-black"
         >
           Start For Free

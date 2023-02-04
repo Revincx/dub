@@ -131,7 +131,7 @@ export default function Metatags({ tweets }: { tweets: any }) {
           className="hover:bg/black-[0.08] group relative flex cursor-copy items-center space-x-5 rounded-full bg-black/5 py-2.5 pr-3 pl-5 transition-all"
           onClick={() => {
             navigator.clipboard.writeText(
-              `https://api.dub.sh/metatags?url=${getUrlFromString(url)}`,
+              `https://${process.env.DUB_API_DOMAIN}/metatags?url=${getUrlFromString(url)}`,
             );
             setCopied(true);
             setTimeout(() => {
@@ -141,7 +141,7 @@ export default function Metatags({ tweets }: { tweets: any }) {
         >
           <div className="w-11/12 overflow-scroll scrollbar-hide">
             <p className="whitespace-nowrap text-sm font-medium text-gray-600">
-              https://api.dub.sh/metatags?url=
+              https://{ process.env.DUB_API_DOMAIN }/metatags?url=
               <span className="text-amber-600">{getUrlFromString(url)}</span>
             </p>
           </div>

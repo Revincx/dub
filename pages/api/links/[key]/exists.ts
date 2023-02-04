@@ -9,7 +9,7 @@ export default withUserAuth(
     // GET /api/links/[key]/exists - check if a key exists
     if (req.method === "GET") {
       const { key } = req.query as { key: string };
-      const response = await checkIfKeyExists("dub.sh", key);
+      const response = await checkIfKeyExists(process.env.DUB_DOMAIN, key);
       return res.status(200).json(response);
     } else {
       res.setHeader("Allow", ["GET"]);

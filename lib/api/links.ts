@@ -109,7 +109,7 @@ export async function getRandomKey(domain: string): Promise<string> {
 
 export async function checkIfKeyExists(domain: string, key: string) {
   if (
-    domain === "dub.sh" &&
+    domain === process.env.DUB_DOMAIN &&
     (RESERVED_KEYS.has(key) || DEFAULT_REDIRECTS[key])
   ) {
     return true; // reserved keys for dub.sh

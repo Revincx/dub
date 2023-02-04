@@ -67,7 +67,7 @@ export function capitalize(str: string) {
 
 export function linkConstructor({
   key,
-  domain = "dub.sh",
+  domain = process.env.DUB_DOMAIN,
   localhost,
   pretty,
   noDomain,

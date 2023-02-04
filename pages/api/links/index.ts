@@ -22,7 +22,7 @@ export default withUserAuth(
         sort?: "createdAt" | "clicks";
       };
       const response = await getLinksForProject({
-        domain: "dub.sh",
+        domain: process.env.DUB_DOMAIN,
         status,
         sort,
         userId: session.user.id,
@@ -36,7 +36,7 @@ export default withUserAuth(
         return res.status(400).json({ error: "Missing key or url" });
       }
       const { hostname, pathname } = new URL(url);
-      if (hostname === "dub.sh" && pathname === `/${key}`) {
+      if (hostname === process.env.DUB_DOMAIN && pathname === `/${key}`) {
         return res.status(400).json({ error: "Invalid url" });
       }
       const domainBlacklisted = await isBlacklistedDomain(url);
@@ -45,7 +45,7 @@ export default withUserAuth(
       }
       const response = await addLink({
         ...req.body,
-        domain: "dub.sh",
+        domain: process.env.DUB_DOMAIN,
         userId: session.user.id,
       });
 

@@ -50,7 +50,7 @@ export default async function handler(req: NextRequest) {
             marginTop: "100px",
           }}
         >
-          dub.sh/{truncate(key, 12)}
+          {process.env.DUB_DOMAIN}/{truncate(key, 12)}
         </h1>
         <p
           style={{

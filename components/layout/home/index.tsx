@@ -46,7 +46,7 @@ export default function HomeLayout({
                   {...FADE_IN_ANIMATION_SETTINGS}
                   href={
                     process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
-                      ? "https://app.dub.sh/login"
+                      ? `https://${process.env.DUB_APP_DOMAIN}/login`
                       : "http://app.localhost:3000/login"
                   }
                   className="rounded-full border border-black bg-black py-1.5 px-5 text-sm text-white transition-all hover:bg-white hover:text-black"
@@ -58,7 +58,7 @@ export default function HomeLayout({
                   {...FADE_IN_ANIMATION_SETTINGS}
                   href={
                     process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
-                      ? "https://app.dub.sh"
+                      ? "https://" + process.env.DUB_APP_DOMAIN
                       : "http://app.localhost:3000"
                   }
                   className="rounded-full border border-black bg-black py-1.5 px-5 text-sm text-white transition-all hover:bg-white hover:text-black"

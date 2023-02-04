@@ -55,6 +55,7 @@ export const FADE_IN_ANIMATION_SETTINGS = {
 
 export const HOME_HOSTNAMES = new Set([
   // comment for better diffs
+  process.env.DUB_DOMAIN,
   "dub.sh",
   "preview.dub.sh",
   "localhost:3000",
@@ -84,16 +85,16 @@ export const RESERVED_KEYS = new Set([
   "demo",
 ]);
 export const DEFAULT_REDIRECTS = {
-  home: "https://dub.sh",
-  signin: "https://app.dub.sh/login",
-  login: "https://app.dub.sh/login",
-  register: "https://app.dub.sh/register",
-  signup: "https://app.dub.sh/register",
-  app: "https://app.dub.sh",
-  dashboard: "https://app.dub.sh",
-  links: "https://app.dub.sh/links",
-  settings: "https://app.dub.sh/settings",
-  welcome: "https://app.dub.sh/welcome",
+  home: "https://" + process.env.DUB_DOMAIN,
+  signin: "https://" + process.env.DUB_APP_DOMAIN + "/login",
+  login: "https://" + process.env.DUB_APP_DOMAIN + "/login",
+  register: "https://" + process.env.DUB_APP_DOMAIN + "/register",
+  signup: "https://" + process.env.DUB_APP_DOMAIN + "/register",
+  app: "https://" + process.env.DUB_APP_DOMAIN + "",
+  dashboard: "https://" + process.env.DUB_APP_DOMAIN + "",
+  links: "https://" + process.env.DUB_APP_DOMAIN + "/links",
+  settings: "https://" + process.env.DUB_APP_DOMAIN + "/settings",
+  welcome: "https://" + process.env.DUB_APP_DOMAIN + "/welcome",
   slack: "https://dub.slack.com",
   discord: "https://twitter.com/dubdotsh", // placeholder for now
 };
@@ -120,7 +121,7 @@ export const SPECIAL_APEX_DOMAINS = {
 export const DEFAULT_LINK_PROPS = {
   key: "github",
   url: "https://github.com/steven-tey/dub",
-  domain: "dub.sh",
+  domain: process.env.DUB_DOMAIN,
   archived: false,
   expiresAt: null,
   password: null,
