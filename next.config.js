@@ -28,4 +28,9 @@ module.exports = {
       },
     ];
   },
+  env: {
+    DUB_DOMAIN: process.env.DUB_DOMAIN,
+    DUB_APP_DOMAIN: process.env.DUB_APP_DOMAIN,
+    DUB_API_DOMAIN: process.env.DUB_API_DOMAIN
+  }
 };
